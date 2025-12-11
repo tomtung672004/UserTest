@@ -12,10 +12,10 @@ class UserController extends Controller
     //
     use ApiResponseTrait;
     protected $userService;
-    public function __construct(UserService $userService)
-    {
-        $this->userService = $userService;
-    }
+    // public function __construct(UserService $userService)
+    // {
+    //     $this->userService = $userService;
+    // }
 
     /**
      * Get all users
