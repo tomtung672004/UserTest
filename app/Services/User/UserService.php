@@ -14,14 +14,4 @@ class UserService extends BaseService implements IUserService
         parent::__construct($userRepository);
         $this->userRepository = $userRepository;
     }
-
-    public function create(array $attributes)
-    {
-        return $this->userRepository->create($attributes);
-    }
-
-    public function update($id, array $attributes)
-    {
-        return $this->userRepository->update($id, $attributes);
-    }
 }

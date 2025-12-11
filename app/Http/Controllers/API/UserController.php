@@ -5,17 +5,17 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\traits\ApiResponseTrait;
+use App\Traits\ApiResponseTrait;
 use App\Services\User\UserService;
 class UserController extends Controller
 {
     //
     use ApiResponseTrait;
     protected $userService;
-    // public function __construct(UserService $userService)
-    // {
-    //     $this->userService = $userService;
-    // }
+    public function __construct(UserService $userService)
+    {
+        $this->userService = $userService;
+    }
 
     /**
      * Get all users
@@ -23,7 +23,7 @@ class UserController extends Controller
     public function index()
     {
         try {
-            $users = User::all();
+            $users = $this->userService->getAll();
             return $this->successResponse($users, 'Users retrieved successfully', 200);
         } catch (\Exception $e) {
             return $this->errorResponse($e->getMessage(), 500);
@@ -36,7 +36,7 @@ class UserController extends Controller
     public function show($id)
     {
         try {
-            $user = User::find($id);
+            $user = $this->userService->getById($id);
             if (!$user) {
                 return $this->errorResponse('User not found', 404);
             }
@@ -59,7 +59,7 @@ class UserController extends Controller
             ]);
 
             $validated['password'] = bcrypt($validated['password']);
-            $user = User::create($validated);
+            $user = $this->userService->create($validated);
             return $this->successResponse($user, 'User created successfully', 201);
         } catch (\Illuminate\Validation\ValidationException $e) {
             return $this->errorResponse($e->errors(), 422);
@@ -74,7 +74,7 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         try {
-            $user = User::find($id);
+            $user = $this->userService->getById($id);
             if (!$user) {
                 return $this->errorResponse('User not found', 404);
             }
@@ -104,11 +104,11 @@ class UserController extends Controller
     public function destroy($id)
     {
         try {
-            $user = User::find($id);
+            $user = $this->userService->getById($id);
             if (!$user) {
                 return $this->errorResponse('User not found', 404);
             }
-            $user->delete();
+            $this->userService->delete($id);
             return $this->successResponse(null, 'User deleted successfully', 200);
         } catch (\Exception $e) {
             return $this->errorResponse($e->getMessage(), 500);

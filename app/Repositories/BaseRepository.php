@@ -1,6 +1,6 @@
 <?php
 namespace App\Repositories;
-use illuminate\database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Model;
 abstract class BaseRepository implements IBaseRepository
 {
     protected $model;

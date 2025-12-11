@@ -1,6 +1,6 @@
 <?php
 namespace App\Services;
-use app\Traits\ApiResponseTrait;
+use App\Traits\ApiResponseTrait;
 
 abstract class BaseService
 {
@@ -43,6 +43,6 @@ abstract class BaseService
         if (!$deleted) {
             return $this->errorResponse("Resource not found.", 404);
         }
-        return $this->successResponse(null, "Resource deleted successfully.", 204);
+        return $this->successResponse(null, "Resource deleted successfully.");
     }
 }
