@@ -5,6 +5,8 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Repositories\User\IUserRepository;
 use App\Repositories\User\UserRepository;
+use App\Repositories\Job\IJobRepository;
+use App\Repositories\Job\JobRepository;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -16,6 +18,7 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         $this->app->bind(IUserRepository::class, UserRepository::class);
+        $this->app->bind(IJobRepository::class, JobRepository::class);
     }
 
     /**

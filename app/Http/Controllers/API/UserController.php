@@ -14,6 +14,7 @@ class UserController extends Controller
     public function __construct(UserService $userService)
     {
         $this->userService = $userService;
+        //$this->middleware('auth:api');
     }
 
     /**
@@ -28,7 +29,6 @@ class UserController extends Controller
             return $this->errorResponse($e->getMessage(), 500);
         }
     }
-
     /**
      * Get a single user by ID
      */
@@ -39,7 +39,7 @@ class UserController extends Controller
             if (!$user) {
                 return $this->errorResponse('User not found', 404);
             }
-            return $this->successResponse($user, 'User retrieved successfully', 200);
+            return $user;
         } catch (\Exception $e) {
             return $this->errorResponse($e->getMessage(), 500);
         }
@@ -55,6 +55,7 @@ class UserController extends Controller
                 'name' => 'required|string|max:255',
                 'email' => 'required|email|unique:users,email',
                 'password' => 'required|string|min:8|confirmed',
+                //'job_id' => 'default|null|exists:jobs,id',
             ]);
 
             $validated['password'] = bcrypt($validated['password']);
@@ -82,6 +83,7 @@ class UserController extends Controller
                 'name' => 'sometimes|required|string|max:255',
                 'email' => 'sometimes|required|email|unique:users,email,' . $id,
                 'password' => 'sometimes|required|string|min:8|confirmed',
+                'job_id' => 'nullable|exists:jobs,id',
             ]);
 
             if (isset($validated['password'])) {

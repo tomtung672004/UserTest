@@ -21,9 +21,10 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            //$table->foreignId('job_id')->nullable()->constrained('jobs')->onDelete('set null');
         });
 
-        
+
     }
 
     /**

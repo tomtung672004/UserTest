@@ -22,7 +22,12 @@ class User extends  Authenticatable implements JWTSubject
         'name',
         'email',
         'password',
+        'job_id',
     ];
+    public function jobs()
+    {
+        return $this->belongsTo(Job::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.
@@ -32,6 +37,7 @@ class User extends  Authenticatable implements JWTSubject
     protected $hidden = [
         'password',
         'remember_token',
+
     ];
     public function getJWTIdentifier()
     {

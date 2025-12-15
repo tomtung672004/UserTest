@@ -18,13 +18,13 @@ class UserRepository extends BaseRepository implements IUserRepository
         return User::class;
     }
 
-    public function findByEmail($email)
-    {
+    // public function findByEmail($email)
+    // {
 
-        $user = $this->model->where('email', $email)->first();
-        if (!$user) {
-            return $this->errorResponse("User not found.", 404);
-        }
-        return $user;
-    }
+    //     $user = $this->model->where('email', $email)->first();
+    //     if (!$user) {
+    //         return $this->errorResponse("User not found.", 404);
+    //     }
+    //     return $user;
+    // }
 }

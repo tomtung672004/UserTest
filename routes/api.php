@@ -31,5 +31,7 @@ Route::group([
     Route::post('logout', [App\Http\Controllers\AuthController::class , 'logout']);
     Route::post('refresh', [App\Http\Controllers\AuthController::class , 'refresh']);
     Route::get('profile', [App\Http\Controllers\AuthController::class , 'profile']);
+    route::resource('users',App\Http\Controllers\API\UserController::class);
+    route::resource('jobs',App\Http\Controllers\API\JobController::class);
 
 });
