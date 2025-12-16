@@ -4,5 +4,5 @@ use App\Repositories\IBaseRepository;
 interface IUserRepository extends IBaseRepository
 {
     // public function findByEmail($email);
-     public function getModel();
+    //  public function getModel();
 }

@@ -10,7 +10,7 @@ abstract class BaseRepository implements IBaseRepository
         $this->model = $model;
     }
 
-    abstract public function getModel();
+    public function getModel(){}
 
     public function setModel()
     {

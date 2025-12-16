@@ -45,10 +45,10 @@ class JobController extends Controller
     public function update(Request $request, $id)
     {
         $validated = $request->validate([
-            'title' => 'sometimes|required|string|max:255',
+            'title' => 'default|"soam"|string|max:255',
             'description' => 'sometimes|required|string',
             'location' => 'sometimes|required|string|max:255',
-            'salary' => 'sometimes|required|numeric',
+            'salary' => 'default|null|numeric',
         ]);
         $job = $this->jobService->update($id, $validated);
         if (!$job) {

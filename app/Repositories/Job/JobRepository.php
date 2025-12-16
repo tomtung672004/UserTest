@@ -11,9 +11,9 @@ class JobRepository extends BaseRepository implements IJobRepository
     {
         parent::__construct($model);
     }
-    public function getModel()
-    {
-        return Job::class;
-    }
+    // public function getModel()
+    // {
+    //     return Job::class;
+    // }
 }
 

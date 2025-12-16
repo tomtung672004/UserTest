@@ -24,7 +24,7 @@ class User extends  Authenticatable implements JWTSubject
         'password',
         'job_id',
     ];
-    public function jobs()
+    public function job()
     {
         return $this->belongsTo(Job::class);
     }

@@ -23,6 +23,7 @@ class UserController extends Controller
     public function index()
     {
         try {
+            $this->middleware('check.user.job:Admin');
             $users = $this->userService->getAll();
             return $this->successResponse($users, 'Users retrieved successfully', 200);
         } catch (\Exception $e) {
