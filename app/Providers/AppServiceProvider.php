@@ -7,6 +7,8 @@ use App\Repositories\User\IUserRepository;
 use App\Repositories\User\UserRepository;
 use App\Repositories\Job\IJobRepository;
 use App\Repositories\Job\JobRepository;
+use App\Services\Task\ITaskService;
+use App\Services\Task\TaskService;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -19,6 +21,7 @@ class AppServiceProvider extends ServiceProvider
         //
         $this->app->bind(IUserRepository::class, UserRepository::class);
         $this->app->bind(IJobRepository::class, JobRepository::class);
+        $this->app->bind(ITaskService::class, TaskService::class);
     }
 
     /**

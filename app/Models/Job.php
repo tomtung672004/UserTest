@@ -13,6 +13,10 @@ class Job extends Model
     {
         return $this->hasMany(User::class, 'job_id', 'id');
     }
+    public function tasks()
+    {
+        return $this->hasMany(Task::class, 'job_id', 'id');
+    }
     protected $fillable = [
         'title',
         'description',

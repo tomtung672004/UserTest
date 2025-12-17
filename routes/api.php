@@ -26,12 +26,12 @@ Route::group([
     'prefix' => 'auth'
 
 ], function ($router) {
-
-    route::post('login', [App\Http\Controllers\AuthController::class , 'login']);
-    Route::post('logout', [App\Http\Controllers\AuthController::class , 'logout']);
-    Route::post('refresh', [App\Http\Controllers\AuthController::class , 'refresh']);
-    Route::get('profile', [App\Http\Controllers\AuthController::class , 'profile']);
+    route::post('login', [App\Http\Controllers\AuthController::class, 'login']);
+    route::post('logout', [App\Http\Controllers\AuthController::class, 'logout']);
+    route::post('refresh', [App\Http\Controllers\AuthController::class, 'refresh']);
+    route::get('profile', [App\Http\Controllers\AuthController::class, 'profile']);
     route::resource('users',App\Http\Controllers\API\UserController::class);
     route::resource('jobs',App\Http\Controllers\API\JobController::class);
+    route::resource('tasks',App\Http\Controllers\API\TaskController::class);
 
 });
