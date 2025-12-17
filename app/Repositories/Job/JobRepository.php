@@ -16,4 +16,3 @@ class JobRepository extends BaseRepository implements IJobRepository
     //     return Job::class;
     // }
 }
-

@@ -15,12 +15,7 @@ class TaskService extends BaseService implements ITaskService
     public function submit($id)
     {
         // Implement the logic to submit a task by its ID
-        $task = $this->taskRepository->find($id);
-        if ($task) {
-            $task->status = 'submitted';
-            $this->taskRepository->update($id, $task->toArray());
-            return $task;
-        }
-        return null;
+        
+
     }
 }

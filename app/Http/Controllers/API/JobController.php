@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Traits\ApiResponseTrait;
 use App\Services\Job\jobService;
-
 class JobController extends Controller
 {
     use ApiResponseTrait;

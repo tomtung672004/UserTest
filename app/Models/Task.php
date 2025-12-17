@@ -17,6 +17,7 @@ class Task extends Model
         'description',
         'estimated_time',
         'user_id',
+        'status',
     ];
     protected $hidden = [
 

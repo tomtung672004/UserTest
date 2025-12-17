@@ -2,7 +2,7 @@
 namespace App\Repositories\Task;
 use App\Repositories\BaseRepository;
 use App\Models\Task;
-use App\Repositories\task\ITaskRepository;
+use App\Repositories\Task\ITaskRepository;
 use App\Traits\ApiResponseTrait;
 class TaskRepository extends BaseRepository implements ITaskRepository
 {

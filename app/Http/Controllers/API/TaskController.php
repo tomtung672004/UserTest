@@ -33,7 +33,7 @@ class TaskController extends Controller
     {
         $validated = $request->validate([
             'title' => 'required|string|max:255',
-            'description' => 'required|string',
+            'description' => 'sometimes|string',
             'estimated_time' => 'required|string|max:255',
         ]);
         $task = $this->taskService->create($validated);
@@ -42,9 +42,11 @@ class TaskController extends Controller
     public function update(Request $request, $id)
     {
         $validated = $request->validate([
-            'title' => 'default|"soam"|string|max:255',
+            'title' => 'sometimes|string|max:255',
             'description' => 'sometimes|required|string',
-            'estimated_time' => 'default|null|string|max:255',
+            'estimated_time' => 'required|string|max:255',
+            'status' => 'sometimes|string|max:255',
+
         ]);
         $task = $this->taskService->update($id, $validated);
         if (!$task) {
@@ -62,10 +64,13 @@ class TaskController extends Controller
     }
     public function submit($id)
     {
-        $task = $this->taskService->submit($id);
+        
+        $check = task::where()
+        if ()
+        $task = $this->taskService->update($id, ['status' => 'submitted']);
         if (!$task) {
-            return $this->errorResponse('Task not found or could not be submitted', 404);
-        }
+            return $this->errorResponse('Task not found', 404);
+    }
         return $this->successResponse($task, 'Task submitted successfully', 200);
     }
 }
