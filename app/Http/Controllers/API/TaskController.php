@@ -64,9 +64,6 @@ class TaskController extends Controller
     }
     public function submit($id)
     {
-        
-        $check = task::where()
-        if ()
         $task = $this->taskService->update($id, ['status' => 'submitted']);
         if (!$task) {
             return $this->errorResponse('Task not found', 404);
